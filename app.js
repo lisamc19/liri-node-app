@@ -34,7 +34,6 @@ function getMyTweets(){
 var params = {screen_name: 'lchrist8775'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
-        //console.log(tweets);
         for (var i = 0; i < tweets.length; i++) {
             var tweetText = tweets[i].text;
             console.log(tweetText);
@@ -51,33 +50,17 @@ var spotify = new Spotify({
   secret: 'c602463cd7f4408eac2ac8f9e4a050d7',
 });
  
-//spotify
-//  .search({ type: 'track', query: 'All the Small Things' })
-//  .then(function(response) {
-//    console.log(response);
-//  })
-//  .catch(function(err) {
-//    console.log(err);
-//  });
- 
-// var spotify = new Spotify({
- //   id: '53755270422d4685ac42959369532add',
-// secret: 'c602463cd7f4408eac2ac8f9e4a050d7'
-//});
  
 spotify.search({ type: 'track', query: 'Ripple' }, function(err, data) {
     if (err) {
        return console.log('Error occurred: ' + err);
     }
-    //console.log(data);
-    //for (var i = 0; i < data.tracks.items.length; i++) {
-    //        var myText = data.tracks.items[i].album;
-    //        console.log(myText);
-    //    }
-    for (var i = 0; i < 20; i++) {
-            var myText = data.tracks.items[i].album;
-            console.log(myText);
-        }
+    for(i = 0; i < data.tracks.items.length; i++){
+    var theTitle = data.tracks.items[i].name
+    var theArtists = data.tracks.items[i].artists[0].name
+    console.log(theTitle);
+    console.log(theArtists);
+    }
 
 });
 
